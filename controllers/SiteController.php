@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Users;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -120,6 +121,17 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
-        return $this->render('about');
+        //return $this->render('about');
     }
+
+    public function actionUsers()
+    {
+        $user = Users::find()->all();
+        //echo $user->login;
+        //echo $user[1]->login;
+        return $this->render('users', ['user' => $user]);
+
+    }
+
+
 }
