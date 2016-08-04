@@ -3,7 +3,8 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Html;
-
+use app\components\BreadcrumbWidget;
+//'/' => 'Главная', '/catalog' => 'Каталог', '/catalog/el1' => 'Товар 1'
 $this->title = 'Users';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -17,6 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <b> LOGIN: <?=$user->login ?></b><br>
         <i> PASSWORD: <?=$user->password ?></i><br><br>
         <? endforeach; ?>
+        <?= BreadcrumbWidget::widget(['bread' => ['/' => 'Главная', '/catalog' => 'Каталог', '/catalog/el1' => 'Товар 1']]);?>
     </p>
 
 
