@@ -31,7 +31,8 @@ class articles extends \yii\db\ActiveRecord
     {
         return [
             [['date'], 'safe'],
-            [['name', 'text', 'anotation', 'author'], 'string', 'max' => 255],
+            [['name', 'anotation', 'author'], 'string', 'max' => 255],
+            [['text'], 'string'],
         ];
     }
 
