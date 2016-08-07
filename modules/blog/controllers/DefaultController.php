@@ -17,7 +17,7 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
-        $articles = articles::find()->all();
+        $articles = articles::find()->orderBy('id DESC')->all();
         return $this->render('index', ['article' => $articles]);
     }
 }
