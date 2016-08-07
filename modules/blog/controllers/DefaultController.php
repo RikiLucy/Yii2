@@ -3,6 +3,8 @@
 namespace app\modules\blog\controllers;
 
 use yii\web\Controller;
+use app\models\articles;
+
 
 /**
  * Default controller for the `blog` module
@@ -15,6 +17,7 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $articles = articles::find()->all();
+        return $this->render('index', ['article' => $articles]);
     }
 }
