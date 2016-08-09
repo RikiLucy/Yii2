@@ -3,6 +3,7 @@
 
 use yii\helpers\Html;
 use app\components\ArticleWidget;
+use yii\widgets\LinkPager;
 //'/' => 'Главная', '/catalog' => 'Каталог', '/catalog/el1' => 'Товар 1'
 $this->title = 'Blog';
 $this->params['breadcrumbs'][] = $this->title;
@@ -12,8 +13,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= Html::a('Admin Panel', 'http://yii2/web/index.php?r=blog/articles') ?>
 
 
-    <? foreach ($article as $article): ?>
+    <? foreach ($articles as $article): ?>
     <?= ArticleWidget::widget(['articles' => $article]); ?>
 
-    <? endforeach; ?>
+    <? endforeach;
+    echo LinkPager::widget(['pagination' => $pages]);
+    ?>
+
+
 </div>

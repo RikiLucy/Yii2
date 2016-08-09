@@ -2,6 +2,7 @@
 
 namespace app\modules\blog\controllers;
 
+use yii\data\Pagination;
 use yii\web\Controller;
 use app\models\articles;
 
@@ -17,7 +18,19 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
-        $articles = articles::find()->orderBy('id DESC')->all();
-        return $this->render('index', ['article' => $articles]);
+        $query = articles::find()->orderBy('id DESC');
+        $countQuery = clone $query;
+        $pages = new Pagination([
+            'totalCount' => $countQuery->count(),
+            'pageSize' => 2
+    ]);
+        $articles = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+        //$articles = articles::find()->orderBy('id DESC')->all();
+        return $this->render('index', [
+            'articles' => $articles,
+            'pages' => $pages
+        ]);
     }
 }
