@@ -5,6 +5,7 @@ namespace app\modules\blog\controllers;
 use yii\data\Pagination;
 use yii\web\Controller;
 use app\models\articles;
+use yii;
 
 
 /**
@@ -16,6 +17,20 @@ class DefaultController extends Controller
      * Renders the index view for the module
      * @return string
      */
+    public function behaviors()
+    {
+        return [
+            'cache' => [
+                'class' => 'yii\filters\PageCache',
+                'only' => ['index'],
+                'variations' => [
+                    Yii::$app->getRequest()->getUrl(),
+                ],
+
+                ],
+
+        ];
+    }
     public function actionIndex()
     {
         $query = articles::find()->orderBy('id DESC');
