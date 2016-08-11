@@ -31,8 +31,11 @@ class DefaultController extends Controller
             $countQuery = clone $query;
             $pages = new Pagination([
                 'totalCount' => $countQuery->count(),
-                'pageSize' => 2
+                'pageSize' => 2,
+                'pageSizeParam' => false,
+                'forcePageParam' => false
             ]);
+
             return [
                 'articles' => $query->offset($pages->offset)
                 ->limit($pages->limit)
