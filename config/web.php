@@ -11,8 +11,24 @@ $config = [
             'class' => 'app\modules\blog\Module',
         ],
     ],
+
     'components' => [
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            //'enableStrictParsing' => false,
+            //'baseUrl' => str_replace('/web', '', (new \yii\web\Request)->getBaseUrl()),
+            'rules' => [
+                '' => 'site/index',
+                //'blog/default/index' => 'blog',
+                //'<action>' => 'site/<action>',
+                '<controller:\w+>/<id:\d+>' => '<controller>/view',
+                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+            ],
+        ],
         'request' => [
+            'baseUrl' => '',
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => '7G-sAVT-DunSRMWCx3BKWzaadB355Exi',
         ],
