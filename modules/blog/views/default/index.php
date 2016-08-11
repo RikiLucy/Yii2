@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="blog-default-index">
     <h1>Блог со статьями</h1>
-    <?= Html::a('Admin Panel', 'http://yii2/web/index.php?r=blog/articles') ?>
+    <?= Html::a('Admin Panel', 'http://yii2/blog/articles') ?>
 
 
     <? foreach ($articles as $article): ?>
